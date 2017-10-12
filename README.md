@@ -2,16 +2,20 @@
 
 Seite als Iframe einbinden und clubname übergeben.
 
+Beispiel unter https://hg.bramberg.ch/hgverwaltung
+
+
+
 Beispiel für ein responsive iframe
 
 ```
-.videoWrapper {
+.statsWrapper {
 	position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
 	padding-top: 25px;
 	height: 0;
 }
-.videoWrapper iframe {
+.statsWrapper iframe {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -22,8 +26,8 @@ Beispiel für ein responsive iframe
 
 <h1>Responsive iframe</h1>
 
-<div class="videoWrapper">
-    <iframe src="//www.youtube.com/embed/9fSde2DD8YQ" allowfullscreen></iframe>
+<div class="statsWrapper">
+    <iframe src="https://stats.hg.bramberg.ch/index.php?club=test" ></iframe>
 </div>
 
 <p>Enjoy =)</p>
