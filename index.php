@@ -178,7 +178,23 @@
 
     <script> // set clubname
         <?php echo 'var club = "' . $club . '";' ;  ?>
-    </script>
+	</script>
+	
+	<!-- Piwik -->
+		<script type="text/javascript">
+		var _paq = _paq || [];
+		/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+		_paq.push(['trackPageView']);
+		_paq.push(['enableLinkTracking']);
+		(function() {
+			var u="//www.stats.ltechnet.ch/";
+			_paq.push(['setTrackerUrl', u+'piwik.php']);
+			_paq.push(['setSiteId', '20']);
+			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		})();
+		</script>
+	<!-- End Piwik Code -->
 </head>
 <body>
 
@@ -190,7 +206,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="https://stats.hg.bramberg.ch" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a>
+      <a class="navbar-brand" href="https://stats.hg.bramberg.ch?club=<?php echo $club ?>" target="_blank" title="Öffne Statistiken in neuem Fenster">  <span class="glyphicon glyphicon-new-window"></span></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
