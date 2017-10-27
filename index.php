@@ -180,21 +180,12 @@
         <?php echo 'var club = "' . $club . '";' ;  ?>
 	</script>
 	
-	<!-- Piwik -->
-		<script type="text/javascript">
-		var _paq = _paq || [];
-		/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-		_paq.push(['trackPageView']);
-		_paq.push(['enableLinkTracking']);
-		(function() {
-			var u="//www.stats.ltechnet.ch/";
-			_paq.push(['setTrackerUrl', u+'piwik.php']);
-			_paq.push(['setSiteId', '20']);
-			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-		})();
-		</script>
-	<!-- End Piwik Code -->
+	<?php 
+        // Include stats script page if file exists		
+			//if (is_file (includes/analythics.php) ) {
+				include "includes/analythics.php";
+			//}
+	?>
 </head>
 <body>
 
@@ -221,7 +212,7 @@
 </nav>
   
 <div class="container-fluid text-center">    
-	 <?php echo "DEBUG: Übergeben wurde die activePage ". ($_GET['page']); ?>
+	 <?php // echo "DEBUG: Übergeben wurde die activePage ". ($_GET['page']); ?>
   <div class="row content">
     <div class="col-sm-10 text-left"> 
      <?php 
