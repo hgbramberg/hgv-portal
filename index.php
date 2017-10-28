@@ -182,9 +182,9 @@
 	
 	<?php 
         // Include stats script page if file exists		
-			//if (is_file (includes/analythics.php) ) {
+			if (is_file ("includes/analythics.php") ) {
 				include "includes/analythics.php";
-			//}
+			}
 	?>
 </head>
 <body>
