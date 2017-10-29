@@ -3,44 +3,6 @@
 <script src="https://hgverwaltung.ch/hgutil-1.0.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
 
-<style>
-	#hg_jahrSelect,
-	#hg_teamSelect,
-	#hg_data {
-		font-family: 'Lato', sans-serif;
-	}
-
-	#hg_jahrSelect {
-		vertical-align: top;
-	}
-
-	#hg_data tbody tr:nth-child(odd) {
-		background-color: #ebeff4;
-	}
-
-	#hg_data tr {
-		text-align: left;
-	}
-
-	#hg_data th {
-		cursor: default;
-	}
-
-	#hg_data td,
-	#hg_data th {
-		padding-left: 3px;
-		padding-right: 10px;
-	}
-
-	#hg_data .sort.asc::after {
-		content: "\25b2";
-	}
-
-	#hg_data .sort.desc::after {
-		content: "\25bc";
-	}
-</style>
-
 <select id="hg_teamSelect" size="3" multiple></select>
 <select id="hg_jahrSelect"></select>
 <span id="hg_alle">
@@ -146,7 +108,6 @@
 				results = results.filter( (result) => result.ort == 'Heim' );
 			}
 
-
 			results.forEach(function (row) {
 				row.datumDisplay = row.datum.substring(8, 10) + '.' + row.datum.substring(5, 7) + '.' + row.datum.substring(0, 4);
 
@@ -156,9 +117,9 @@
 				}
 				else {
 					row.zeit = '';
-				};				
+				};
 
-				//Team Name kürzen
+				//Team Name kÃ¼rzen
 				var re = new RegExp(club,"i");
 				row.team = row.team.replace(re, "");				
 			});
