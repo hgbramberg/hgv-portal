@@ -1,6 +1,6 @@
 <script src="https://hgverwaltung.ch/polyfill/v2/polyfill.min.js?features=fetch"></script>
 <script src="https://hgverwaltung.ch/list-1.5.min.js"></script>
-<script src="https://hgverwaltung.ch/hgutil-1.0.js"></script>
+<script src="https://hgverwaltung.ch/hgutil-1.1.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
 
 <select id="hg_teamSelect" size="3" multiple></select>
@@ -45,7 +45,7 @@
 <script>
 	(function () {
 		//var club = 'test';
-		hgutil.loadSelectFromArray('https://www.hgverwaltung.ch/api/1/' + club + '/spiele/jahre', 'hg_jahrSelect', true, getData);
+		hgutil.loadSelectFromArray('https://www.hgverwaltung.ch/api/1/' + club + '/spiele/jahre?alle=1', 'hg_jahrSelect', (new Date()).getFullYear(), getData);	
 		hgutil.loadSelectFromArray('https://www.hgverwaltung.ch/api/1/' + club + '/mannschaften?spiele=true', 'hg_teamSelect', true, getData);
 
 		var hgDataTable = document.getElementById("hg_data");
