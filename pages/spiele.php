@@ -157,6 +157,10 @@
 				else {
 					row.zeit = '';
 				};				
+
+				//Team Name kürzen
+				var re = new RegExp(club,"i");
+				row.team = row.team.replace(re, "");				
 			});
 			dataList.add(results);
 
