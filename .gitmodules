@@ -1,0 +1,3 @@
+[submodule "hgv-embed"]
+	path = hgv-embed
+	url = https://git.hgverwaltung.ch/sr/embed.git
