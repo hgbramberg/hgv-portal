@@ -1,154 +1,7 @@
 <!DOCTYPE html>
-<?php 
-	// Save club name during session
-        session_start();
-        if (isset ($_GET['club']))
-        $_SESSION['club'] = $_GET['club'];
-        $club = $_SESSION['club'];
-
-	// Save page name
-		if (isset ($_GET['page']))
-		$page = $_GET['page'];
-
-	// Functions for Submenu generation
-		function curPageURL() {
-			 $pageURL = '';
-
-			 if ($_SERVER["SERVER_PORT"] != "80") {
-			  $pageURL .= $_SERVER["REQUEST_URI"];
-			 } else {
-			  $pageURL .= $_SERVER["REQUEST_URI"];
-			 }
-			 return $pageURL;
-			}
-
-		function ordered_list($array,$parent_id = 0)
-			{
-			  $temp_array = array();
-			  foreach($array as $element)
-			  {
-				if ($element['parent_id'] == $parent_id)
-				{
-				  $element['subs'] = $ordered_list($array, $element['id']);
-				  $temp_array[] = $element;
-				}
-			  }
-			  return $temp_array;
-			}
-
-		function bootstrap_menu($array,$parent_id = 0,$parents = array()) {
-				if($parent_id==0)
-				{
-					foreach ($array as $element) {
-						if (($element['parent_id'] != 0) && !in_array($element['parent_id'],$parents)) {
-							$parents[] = $element['parent_id'];
-						}
-					}
-				}
-				$menu_html = '';
-				foreach($array as $element)
-				{
-
-					if($element['parent_id']==$parent_id)
-					{
-						if(in_array($element['id'],$parents))
-						{
-
-
-							$menu_html .= '<li class="dropdown">';
-							$menu_html .= '<a href="'.$element['url'].'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">'.$element['name'].' <span class="caret"></span></a>';
-						}
-						else   {
-						 $pagenameurl=$element['url'];
-						 $pagename= curPageURL();
-						 $host =$_SERVER['REQUEST_URI'];
-						 $pages = 'home.php';
-
-
-						if($host==$pagenameurl){  $act="active";} else { $act=""; }
-							$menu_html .= '<li class='.$act.'>';
-                            $menu_html .= '<a href="' . $element['url'] . '">' . $element['name'] . '</a>';
-						}
-						if(in_array($element['id'],$parents))
-						{
-							$menu_html .= '<ul class="dropdown-menu" role="menu">';
-							$menu_html .= bootstrap_menu($array, $element['id'], $parents);
-							$menu_html .= '</ul>';
-						}
-						$menu_html .= '</li>';
-					}
-				}
-				return $menu_html;
-			}
-
-// the Menu Array
-		$menu_items = array(
-		array(
-			"id" => "1", 
-			"url" => '?page=home.php', 
-			"parent_id" => "0", 
-			"name" => 'Home', 
-			"order" => "0",
-
-		),
-		array(
-			"id" => "2", 
-			"url" => '?page=pages/spiele.php', 
-			"parent_id" => "0", 
-			"name" => 'Agenda', 
-			"order" => "20",
-
-		), 
-		array(
-			"id" => "20", 
-			"url" => '?page=pages/spieleMitResultatTingle.php', 
-			"parent_id" => "0", 
-			"name" => 'Spiele', 
-			"order" => "20",
-
-		), 
-		array(
-			"id" => "300", 
-			"url" => '', 
-			"parent_id" => "0", 
-			"name" => 'Durchschnitt', 
-			"order" => "0",
-
-		), 
-		array(
-			"id" => "310", 
-			"url" => '?page=pages/schnitt.php', 
-			"parent_id" => "300", 
-			"name" => 'Durchschnitt', 
-			"order" => "0",
-
-		), 
-		array(
-			"id" => "320", 
-			"url" => '?page=pages/schnittsaison.php', 
-			"parent_id" => "300", 
-			"name" => 'Saisonverlauf', 
-			"order" => "10",
-
-		),  
-		array(
-			"id" => "330", 
-			"url" => '?page=pages/schnittentwicklung.php', 
-			"parent_id" => "300", 
-			"name" => 'letze 5 Jahre', 
-			"order" => "10",
-
-		),  
-		array(
-			"id" => "400", 
-			"url" => '?page=pages/rangpunkte.php', 
-			"parent_id" => "0", 
-			"name" => 'Rangpunkte', 
-			"order" => "20",
-
-		)
-	);
-?>
+<?php
+// Include helper functions	
+		if (is_file ("includes/functions.php") ) { include "includes/functions.php";}?>
 <html lang="en">
 <head>
     <title>Statistiken von HG Verwaltung</title>
@@ -166,10 +19,12 @@
 	</script>
 	
 	<?php 
-        // Include stats script page if file exists		
-			if (is_file ("includes/analythics.php") ) {
-				include "includes/analythics.php";
-			}
+	    // Include stats script page if file exists		
+			if (is_file ("includes/analythics.php") ) { include "includes/analythics.php";}
+		// Include hgv-includes		
+			if (is_file ("includes/hgverwaltung.php") ) { include "includes/hgverwaltung.php";}
+		// Include menu array		
+		if (is_file ("includes/menu.php") ) { include "includes/menu.php";}	
 	?>
 </head>
 <body>
@@ -221,30 +76,28 @@
   </div>
 </div>
 
-	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>
-$(document).ready(function($){
-    var url = window.location.href;
-    $('.nav li a[href="'+url+'"]').addClass('active');
-});
-</script>
+	
 <script>
+	$(document).ready(function($){
+		var url = window.location.href;
+		$('.nav li a[href="'+url+'"]').addClass('active');
+	});
+</script>
 
+<script>
+	$(function(){
 
-$(function(){
+		var url = window.location.pathname, 
+			urlRegExp = new RegExp(url.replace(/\/$/,'') + "$"); // create regexp to match current url pathname and remove trailing slash if present as it could collide with the link in navigation in case trailing slash wasn't present there
+			// now grab every link from the navigation
+			$('.nav li a').each(function(){
+				// and test its normalized href against the url pathname regexp
+				if(urlRegExp.test(this.href.replace(/\/$/,''))){
+					$(this).addClass('active');
+				}
+			});
 
-    var url = window.location.pathname, 
-        urlRegExp = new RegExp(url.replace(/\/$/,'') + "$"); // create regexp to match current url pathname and remove trailing slash if present as it could collide with the link in navigation in case trailing slash wasn't present there
-        // now grab every link from the navigation
-        $('.nav li a').each(function(){
-            // and test its normalized href against the url pathname regexp
-            if(urlRegExp.test(this.href.replace(/\/$/,''))){
-                $(this).addClass('active');
-            }
-        });
-
-});
+	});
 </script>
 	
 	
