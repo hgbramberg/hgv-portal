@@ -10,26 +10,42 @@ $menu_items = array(
 
     ),
     array(
-        "id" => "1", 
-        "url" => '?page=pages/agenda.php', 
+        "id" => "100", 
+        "url" => '', 
         "parent_id" => "0", 
         "name" => 'Agenda', 
         "order" => "20",
 
-    ), 
+    ),
     array(
-        "id" => "2", 
+        "id" => "110", 
+        "url" => '?page=pages/agenda.php', 
+        "parent_id" => "100", 
+        "name" => 'Anlässe', 
+        "order" => "20",
+
+    ),  
+    array(
+        "id" => "120", 
         "url" => '?page=pages/spiele.php', 
-        "parent_id" => "0", 
+        "parent_id" => "100", 
         "name" => 'Spiele', 
         "order" => "20",
 
-    ), 
+    ),
+    array(
+        "id" => "130", 
+        "url" => '?page=pages/kombi_agenda.php', 
+        "parent_id" => "100", 
+        "name" => 'Jahresprogramm', 
+        "order" => "20",
+
+    ),  
     array(
         "id" => "20", 
         "url" => '?page=pages/spieleMitResultatTingle.php', 
         "parent_id" => "0", 
-        "name" => 'Spielresultate', 
+        "name" => 'Spiele', 
         "order" => "20",
 
     ), 
@@ -37,7 +53,7 @@ $menu_items = array(
         "id" => "300", 
         "url" => '', 
         "parent_id" => "0", 
-        "name" => 'Durchschnitt', 
+        "name" => 'Einzelschläger', 
         "order" => "0",
 
     ), 
@@ -66,10 +82,42 @@ $menu_items = array(
 
     ),  
     array(
-        "id" => "400", 
+        "id" => "340", 
         "url" => '?page=pages/rangpunkte.php', 
-        "parent_id" => "0", 
+        "parent_id" => "300", 
         "name" => 'Rangpunkte', 
+        "order" => "20",
+
+    ),
+    array(
+        "id" => "400", 
+        "url" => '?page=pages/home.php', 
+        "parent_id" => "0", 
+        "name" => 'Mannschaft', 
+        "order" => "20",
+
+    ),
+    array(
+        "id" => "410", 
+        "url" => '?club=bramberg&page=hgv-embed/1/mannschaftsdurchschnitt.html', 
+        "parent_id" => "400", 
+        "name" => 'Mannschaftsdurchschnitt', 
+        "order" => "20",
+
+    ),
+    array(
+        "id" => "420", 
+        "url" => '?club=bramberg&page=hgv-embed/1/mannschaftstreiche.html', 
+        "parent_id" => "400", 
+        "name" => 'Mannschaftsstreiche', 
+        "order" => "20",
+
+    ),
+    array(
+        "id" => "440", 
+        "url" => '?club=bramberg&page=hgv-embed/1/streichegrafisch.html', 
+        "parent_id" => "400", 
+        "name" => 'Streichegrafisch', 
         "order" => "20",
 
     ),

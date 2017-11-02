@@ -1,3 +1,5 @@
+<?php echo shell_exec('git log ?'); ?>
+
 <?php
     // Anzeige der CHANGELOG.md
     require "includes/parsedown/Parsedown.php";

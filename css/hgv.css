@@ -1,7 +1,10 @@
 #hg_jahrSelect,
 #hg_teamSelect,
-#hg_data {
+#hg_data_old {
     font-family: 'Lato', sans-serif;
+}
+#hg_data {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 #hg_jahrSelect {
