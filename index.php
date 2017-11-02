@@ -59,8 +59,9 @@
         // Include page if set		
 		if (isset ($page))
 		{
-			// check if page name ist file
-			if (is_file($page)) {
+      
+			// check if page name ist file or url (simplified)
+			if (is_file($page) or (substr_compare($page, "http", 0, 4) == 0 )) {
 				include ($page);
 			} else {
 				include "error.php";
@@ -70,7 +71,7 @@
         {
             include "home.php";
         }
-        
+      
         ?>
     </div>
   </div>

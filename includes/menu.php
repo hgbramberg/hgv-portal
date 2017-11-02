@@ -99,7 +99,7 @@ $menu_items = array(
     ),
     array(
         "id" => "410", 
-        "url" => '?club=bramberg&page=hgv-embed/1/mannschaftsdurchschnitt.html', 
+        "url" => '?club=bramberg&page=https://hgverwaltung.ch/embed/1/mannschaftsdurchschnitt.html', 
         "parent_id" => "400", 
         "name" => 'Mannschaftsdurchschnitt', 
         "order" => "20",
@@ -107,7 +107,7 @@ $menu_items = array(
     ),
     array(
         "id" => "420", 
-        "url" => '?club=bramberg&page=hgv-embed/1/mannschaftstreiche.html', 
+        "url" => '?club=bramberg&page=https://hgverwaltung.ch/embed/1/mannschaftstreiche.html', 
         "parent_id" => "400", 
         "name" => 'Mannschaftsstreiche', 
         "order" => "20",
@@ -115,7 +115,7 @@ $menu_items = array(
     ),
     array(
         "id" => "440", 
-        "url" => '?club=bramberg&page=hgv-embed/1/streichegrafisch.html', 
+        "url" => '?club=bramberg&page=https://hgverwaltung.ch/embed/1/streichegrafisch.html', 
         "parent_id" => "400", 
         "name" => 'Streichegrafisch', 
         "order" => "20",
