@@ -1,71 +1,3 @@
-<script src="https://hgverwaltung.ch/polyfill/v2/polyfill.min.js?features=fetch"></script>
-<script src="https://hgverwaltung.ch/list-1.5.min.js"></script>
-<script src="https://hgverwaltung.ch/hgutil-1.0.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-
-<style>
-	#hg_jahrSelect,
-	#hg_teamSelect,
-	#hg_data,
-	#hg_alle {
-		font-family: 'Lato', sans-serif;
-	}
-
-	#hg_jahrSelect,
-	#hg_alle,
-	#hg_alle input {
-		vertical-align: top;
-	}
-
-	#hg_data tbody tr:nth-child(odd) {
-		background-color: #ebeff4;
-	}
-
-	#hg_data tr {
-		text-align: left;
-	}
-
-	#hg_data th {
-		cursor: default;
-	}
-
-	#hg_data .number {
-		text-align: right;
-		padding-right: 5px;
-	}
-
-	#hg_data td {
-		width: 40px;
-	}
-
-	#hg_data td.nachname {
-		width: 200px;
-	}
-
-	#hg_data td.vorname {
-		width: 200px;
-	}
-
-	#hg_data td.diff.positive {
-		background-color: lightgreen;
-	}
-
-	#hg_data td.diff.negative {
-		background-color: lightcoral;
-	}
-
-	#hg_data .sort.asc::after {
-		content: "\25b2";
-	}
-
-	#hg_data .sort.desc::after {
-		content: "\25bc";
-	}
-
-	#hg_total_tr td {
-		font-weight: bold;
-	}
-</style>
 
 <select id="hg_teamSelect" size="3" multiple></select>
 <select id="hg_jahrSelect"></select>
@@ -73,10 +5,11 @@
 <input type="radio" name="alle" value="1" checked>Alle Spiele
 <input type="radio" name="alle" value="0">Nur Meisterschaft
 </span>
-<?php echo "Übergeben wurde der Name " . $_GET["club"]; ?>
+
 <table id="hg_data" style="display: none;">
 	<thead>
 		<tr>
+			<th class="sort" data-sort="rang">Rang</th>
 			<th class="sort" data-sort="nachname">Nachname</th>
 			<th class="sort" data-sort="vorname">Vorname</th>
 			<th class="sort number" data-sort="punkte">Punkte</th>
@@ -94,6 +27,7 @@
 
 <table style="display: none;">
 	<tr id="hg_tr_template">
+		<td class="rang"></td>
 		<td class="nachname"></td>
 		<td class="vorname"></td>
 		<td class="punkte number"></td>
@@ -103,7 +37,7 @@
 		<td class="rangpunkte number"></td>
 	</tr>
 	<tr id="hg_total_tr">
-		<td colspan="2" class="total_label"></td>
+		<td colspan="3" class="total_label"></td>
 		<td class="total_punkte number"></td>
 		<td class="total_streiche number"></td>
 		<td class="total_schnitt number"></td>
@@ -183,6 +117,17 @@
 			var totalPunkte = 0;
 			var totalStreiche = 0;
 
+
+			// sortieren nach schnitt absteigend
+			results.sort(function(a,b) { return parseFloat(b.schnitt) - parseFloat(a.schnitt) } );
+
+			// Rang einfügen
+			var rang = 1;
+			results.forEach(function (row) {
+				row.rang = rang;
+				rang = rang + 1 ;
+			});
+
 			results.forEach(function (row) {
 				if (row.schnitt && row.schnittVorjahr) {
 					row.diff = (parseFloat(row.schnitt) - parseFloat(row.schnittVorjahr)).toFixed(2);
@@ -213,8 +158,8 @@
 				}
 			}
 
-			//sortierung nach schnitt
-			dataList.sort('schnitt', { order: "desc" });
+			//sortierung nach schnitt (nicht mehr nötig da json bereits sortiert)
+//			dataList.sort('schnitt', { order: "desc" });
 
 			// mannschaftstotal
 			if (totalStreiche > 0) {
