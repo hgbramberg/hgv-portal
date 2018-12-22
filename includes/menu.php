@@ -11,7 +11,7 @@ $menu_items = array(
     ),
     array(
         "id" => "100", 
-        "url" => '', 
+        "url" => '?page=pages/agenda.php', 
         "parent_id" => "0", 
         "name" => 'Agenda', 
         "order" => "20",
@@ -19,7 +19,7 @@ $menu_items = array(
     ),
     array(
         "id" => "110", 
-        "url" => '?page=pages/agenda.php', 
+        "url" => '?page=pages/agenda_anlaesse.php', 
         "parent_id" => "100", 
         "name" => 'Anlässe', 
         "order" => "20",
@@ -27,7 +27,7 @@ $menu_items = array(
     ),  
     array(
         "id" => "120", 
-        "url" => '?page=pages/spiele.php', 
+        "url" => '?page=pages/agenda_spiele.php', 
         "parent_id" => "100", 
         "name" => 'Spiele', 
         "order" => "20",
