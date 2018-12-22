@@ -5,7 +5,7 @@
 		_paq.push(['trackPageView']);
 		_paq.push(['enableLinkTracking']);
 		(function() {
-			var u="//www.stats.ltechnet.ch/";
+			var u="//stats.ltechnet.ch/";
 			_paq.push(['setTrackerUrl', u+'piwik.php']);
 			_paq.push(['setSiteId', '20']);
 			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];

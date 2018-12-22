@@ -14,12 +14,12 @@
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/hgv.css">
 
-    <script> // set clubname
+  <script> // set clubname
         <?php echo 'var club = "' . $club . '";' ;  ?>
 	</script>
 	
 	<?php 
-	    // Include stats script page if file exists		
+	  // Include stats script page if file exists		
 			if (is_file ("includes/analythics.php") ) { include "includes/analythics.php";}
 		// Include hgv-includes		
 			if (is_file ("includes/hgverwaltung.php") ) { include "includes/hgverwaltung.php";}
