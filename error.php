@@ -1,6 +1,7 @@
 <h1>Fehler</h1>
 <div>Hoppla es ist ein Fehler aufgetreten!</div>
-   
+ </br>
+ </br>  
     
 <div> Debug    
 <p><?php echo "Übergeben wurde der Club $club"; ?></p>

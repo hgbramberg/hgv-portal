@@ -1,8 +1,8 @@
 # Changelog
 Alle Änderungen zu diesem Projekt werden hier dokumentiert.
-
 All notable changes to this project will be documented in this file.
 
+Für ein detailierteres Changelog, bitte im git Repository nachschlagen.
 
 
 ## [Unreleased]
