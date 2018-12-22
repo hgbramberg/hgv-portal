@@ -1,4 +1,4 @@
-    <h1>Statistiken von der HG Verwaltung</h1>
+    <h1>Statistiken aus der HG Verwaltung</h1>
     
     <p>Enjoy =)</p>
 
