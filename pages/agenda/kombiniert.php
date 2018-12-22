@@ -32,8 +32,28 @@
     <td class="spielort"></td>
 	</tr>
 </table>
-
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css">  
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
+<script type="text/javascript" charset="utf8" src="includes/pdfmake/build/pdfmake.min.js"></script>
+<script type="text/javascript" charset="utf8" src="includes/pdfmake/build/vfs_fonts.js"></script>
+<script type="text/javascript" charset="utf8" src="includes/jszip/dist/jszip.min.js"></script>
 <script>
+
+
+
+$(document).ready(function() {
+    $('#hg_data').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'excelHtml5',
+            'pdfHtml5'
+        ]
+    } );
+} );
+
 	(function () {
 	/*	var club = hgutil.getParameterByName('club');
 		if (!club) {
