@@ -1,3 +1,7 @@
 [submodule "hgv-embed"]
 	path = hgv-embed
 	url = https://git.hgverwaltung.ch/sr/embed.git
+
+[submodule "includes/jquery.geturlparam"]
+	path = includes/jquery.geturlparam
+	url = https://github.com/repalogic/jquery.geturlparam.git
