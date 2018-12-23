@@ -5,3 +5,4 @@
 [submodule "includes/jquery.geturlparam"]
 	path = includes/jquery.geturlparam
 	url = https://github.com/repalogic/jquery.geturlparam.git
+ 
