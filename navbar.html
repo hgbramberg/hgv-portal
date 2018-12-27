@@ -1,36 +1,42 @@
 <!-- THE NAVIGATION BAR -->
-
-<a class="navbar-brand" href="#" alt="Statisitiken aus der HG Verwaltung">HGV-Portal</a>
+<a class="navbar-brand" href="?page=home.html" alt="" title="Statisitiken aus der HG Verwaltung">HGV-Portal</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
 </button>
 
+<!-- Navigation Entries -->
 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
+
+        <!-- Home -->
         <li class="nav-item">
-            <a class="nav-link active" href="?page=home.html">Home</a>
+            <a class="nav-link active" title="Startseite" href="?page=home.html">Home</a>
         </li>
+
         <!-- Agenda -->
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown-agenda" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Agenda</a>
+            <a class="nav-link dropdown-toggle" title="Anlässe & Spielplaner, Jahresprogramm" href="#" id="dropdown-agenda" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Agenda</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="?page=agenda/anlaesse.html">Anlässe</a>
-            <a class="dropdown-item" href="?page=agenda/spiele.html">Spiele</a>
-            <a class="dropdown-item" href="?page=agenda/kombiniert.html">Jahresprogramm</a>
+                <a class="dropdown-item" href="?page=agenda/anlaesse.html">Anlässe</a>
+                <a class="dropdown-item" href="?page=agenda/spiele.html">Spiele</a>
+                <a class="dropdown-item" href="?page=agenda/kombiniert.html">Jahresprogramm</a>
             </div>
         </li>
+        <!-- Spiel -->
         <li class="nav-item">
             <a class="nav-link" href="?page=spieleMitResultatTingle.html">Spiele</a>
         </li>
+
         <!-- Mannschaft -->
         <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown-agenda" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mannschaft</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown01">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown-agenda" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mannschaft</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
                 <a class="dropdown-item" href="?page=agenda/anlaesse.html">Durchschnitt</a>
                 <a class="dropdown-item" href="?page=agenda/spiele.html">Streiche</a>
                 <a class="dropdown-item" href="?page=agenda/kombiniert.html">Streige grafisch</a>
-                </div>
-            </li>
+            </div>
+        </li>
+
         <!-- Einzelschläger -->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown-agenda" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Einzelschläger</a>
@@ -41,6 +47,7 @@
             <a class="dropdown-item" href="?page=agenda/kombiniert.html">Rangpunkte</a>
             </div>
         </li>
+
         <!-- About -->
         <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown-agenda" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
@@ -50,8 +57,15 @@
                 <a class="dropdown-item" href="?page=agenda/kombiniert.html">Jahresprogramm</a>
                 </div>
         </li>
+
+        <!-- Feedback -->
         <li class="nav-item">
             <a class="nav-link" href="?page=feedback.html">Rückmeldung / Feedback</a>
+        </li>
+
+        <!-- Open in new Window -->
+        <li class="nav-item">
+            <a class="nav-link" href="?page=home.html" target="_blank" title="Öffne Statistiken in neuem Fenster">  <span class="fas fa-external-link-alt"></span></a>
         </li>
     </ul>
     
