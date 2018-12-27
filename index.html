@@ -57,6 +57,15 @@
         // Stop normal link behavior
         return false;
       });
+      // Jquery after loaded window
+      $(window).on('load', function() {
+        // Navbar set active link to active
+        $(".navbar").find(".active").removeClass("active");
+        $('.navbar a[href="' + (location.search) + '"]').closest('li').addClass('active');
+        
+        // Stop normal link behavior
+        return false;
+      });
     </script>
   </head>
 
