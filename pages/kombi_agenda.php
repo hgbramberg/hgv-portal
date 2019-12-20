@@ -1,17 +1,24 @@
+<header>
+    <img src="https://hg.bramberg.ch/wp-content/uploads/2014/03/logodenkmal-full-transparent1.png" alt="HG Bramberg" height="50px">
+    <b>Jahresprogramm HG Bramberg</b>
+</header>
+
 <select id="hg_teamSelect" size="3" multiple></select>
 <select id="hg_jahrSelect"></select>
+
+<button onclick="window.print()" id="button_print">Seite Drucken</button>
 
 <table id="hg_data" style="display: none;">
 	<thead>
 		<tr>
-        <th class="sort" data-sort="datum">Tag</th>
+        <th>Tag</th>
         <th class="sort" data-sort="datum">Datum</th>
         <th class="sort" data-sort="zeit">Zeit</th>
         <th class="sort" data-sort="team">Team</th>
-        <th class="sort" data-sort="ort">Ort</th>
+        <th class="sort" data-sort="ort">A/H</th>
         <th class="sort" data-sort="art">Anlass</th>
         <th class="sort" data-sort="gegner">Gegner</th>
-        <th class="sort" data-sort="spielort">Ort</th>
+        <th class="sort" data-sort="spielort">Spielort</th>
 		</tr>
 	</thead>
 	<tbody class="hg_list">
@@ -40,6 +47,17 @@
 		  club = 'test';
 		}
 */
+
+        var weekday = new Array(7);
+             weekday[0] = "So";
+             weekday[1] = "Mo";
+             weekday[2] = "Di";
+             weekday[3] = "Mi";
+             weekday[4] = "Do";
+             weekday[5] = "Fr";
+             weekday[6] = "Sa";
+
+
 		hgutil.loadSelectFromArray('https://www.hgverwaltung.ch/api/1/' + club + '/spiele/jahre?alle=1', 'hg_jahrSelect', (new Date()).getFullYear(), getData);
 		hgutil.loadSelectFromArray('https://www.hgverwaltung.ch/api/1/' + club + '/mannschaften?spiele=true', 'hg_teamSelect', true, getData);
 
@@ -71,10 +89,9 @@
 
 			if (jahr && teams && teams.length > 0) {
 				var url = 'https://www.hgverwaltung.ch/api/1/' + club + '/spiele/' + teams.join(',') + '?jahr=' + jahr;
-				var url_anlaesse = 'https://www.hgverwaltung.ch/api/1/' + club + '/anlaesse' + '?jahr=' + jahr + '&inklSpiele=false';
+				var url_anlaesse = 'https://www.hgverwaltung.ch/api/1/' + club + '/anlaesse' + '?jahr=' + jahr + '&mannschaft' + teams.join(',')+',Alle' + '&inklSpiele=false';
 
             dataList.clear(); 
-               
                 
             fetch(url)
                 .then(function (response) { return response.json(); })
@@ -102,6 +119,9 @@
             results.forEach(function (row) {
                 row.datumDisplay = row.datum.substring(8, 10) + '.' + row.datum.substring(5, 7) + '.' + row.datum.substring(0, 4);
                 row.zeit = row.datum.substring(11);
+                
+                var d = new Date(row.datum.substring(0, 4),row.datum.substring(5, 7) -1 ,row.datum.substring(8, 10));
+                row.wochentag = weekday[d.getDay()];
 
                 // Zeit ausblenden wenn 00:00
 				if (row.datum.substring(11) != '00:00') {
@@ -115,6 +135,8 @@
 				var re = new RegExp(club,"i");
 				row.team = row.team.replace(re, "");
 
+                re = new RegExp('Nachwuchs');
+                row.team = row.team.replace(re, "NW");
 
             });
             dataList.add(results);
@@ -123,16 +145,6 @@
         }
 
         function showDataAnlaesse(results) {
-            
-            var weekday = new Array(7);
-             weekday[0] = "Sonntag";
-             weekday[1] = "Montag";
-             weekday[2] = "Dienstag";
-             weekday[3] = "Mittwoch";
-             weekday[4] = "Donnerstag";
-             weekday[5] = "Freitag";
-             weekday[6] = "Samstag";
-            
             
             //dataList.clear();
 
@@ -160,6 +172,13 @@
 				else {
 					row.zeit = '';
 				};
+
+                
+                re = new RegExp('Nachwuchs');
+                row.team = row.team.replace(re, "NW");
+
+               
+
             });
             dataList.add(results);
 

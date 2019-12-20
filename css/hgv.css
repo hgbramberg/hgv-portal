@@ -69,3 +69,16 @@
 #hg_total_tr td {
     font-weight: bold;
 }
+
+
+@media print {
+    #hg_jahrSelect {
+      display: none;
+    }
+    #hg_teamSelect {
+        display: none;
+    }
+    #button_print {
+        display: none;
+    }
+} 
