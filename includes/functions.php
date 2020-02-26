@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 // Save club name during session
 	session_start();
 	if (isset ($_GET['club']))
