@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 // Include helper functions	
 		if (is_file ("includes/functions.php") ) { include "includes/functions.php";}?>
